@@ -33,9 +33,23 @@ class Visor {
    */
   draw(ctx, width, height) {
     ctx.translate(width / 2, height / 2);
-    ctx.fillStyle = "gray";
-    ctx.arc(0, 0, this.radius, 0, 360);
+    ctx.save();
+
+    // draws the largest circle body
+    ctx.beginPath();
+    ctx.fillStyle = "#9e9e9e";
+    ctx.arc(0, 0, this.radius + 20, 0, 360);
+    ctx.stroke();
     ctx.fill();
+    ctx.closePath();
+
+    // draws the inner container
+    ctx.beginPath();
+    ctx.fillStyle = "#fff";
+    ctx.arc(0, 0, this.radius, 0, 360);
+    ctx.stroke();
+    ctx.fill();
+    ctx.closePath();
 
     // draws the points that refers seconds and minutes
     for (let i = 1; i <= 60; i++) {
@@ -54,7 +68,7 @@ class Visor {
       ctx.moveTo(x1, y1);
       ctx.lineTo(x2, y2);
       ctx.stroke();
-      ctx.strokeStyle = "black";
+      ctx.strokeStyle = "#000";
 
       ctx.closePath();
       ctx.fill();
@@ -64,7 +78,7 @@ class Visor {
     // draws the hours numbers
     for (let i = 1; i <= 12; i++) {
       ctx.save();
-      ctx.fillStyle = "red";
+      ctx.fillStyle = "#000";
       const angle = i * 30 - 90;
       const radians = (angle * Math.PI) / 180;
 
