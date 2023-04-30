@@ -1,5 +1,8 @@
 class Clock {
-  visor = new Visor(200);
+  /**
+   * @type {Visor}
+   */
+  visor;
 
   /**
    * @type {CanvasRenderingContext2D}
@@ -20,10 +23,12 @@ class Clock {
     this.ctx = ctx;
     this.width = width;
     this.height = height;
+
+    this.visor = new Visor(width / 4);
   }
 
   animate = () => {
-    this.ctx.clearRect(0, 0, 500, 500);
+    this.ctx.clearRect(0, 0, this.width, this.height);
 
     this.visor.draw(this.ctx, this.width, this.height);
 

@@ -37,15 +37,15 @@ class Visor {
 
     // draws the largest circle body
     ctx.beginPath();
-    ctx.fillStyle = "#9e9e9e";
-    ctx.arc(0, 0, this.radius + 20, 0, 360);
+    ctx.fillStyle = "#37474F";
+    ctx.arc(0, 0, this.radius + 10, 0, 360);
     ctx.stroke();
     ctx.fill();
     ctx.closePath();
 
     // draws the inner container
     ctx.beginPath();
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = "#eceff1";
     ctx.arc(0, 0, this.radius, 0, 360);
     ctx.stroke();
     ctx.fill();
@@ -68,8 +68,7 @@ class Visor {
       ctx.moveTo(x1, y1);
       ctx.lineTo(x2, y2);
       ctx.stroke();
-      ctx.strokeStyle = "#000";
-
+      ctx.strokeStyle = "#000000";
       ctx.closePath();
       ctx.fill();
       ctx.restore();
@@ -78,7 +77,7 @@ class Visor {
     // draws the hours numbers
     for (let i = 1; i <= 12; i++) {
       ctx.save();
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = "#000000";
       const angle = i * 30 - 90;
       const radians = (angle * Math.PI) / 180;
 

@@ -4,6 +4,11 @@ function init() {
    */
   const canvas = document.getElementById("canvas");
 
+  const { innerWidth, innerHeight } = window;
+
+  canvas.width = innerWidth < 500 ? innerWidth : 500;
+  canvas.height = innerHeight < 500 ? innerHeight : 500;
+
   /**
    * @type {CanvasRenderingContext2D}
    */
