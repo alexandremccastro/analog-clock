@@ -2,29 +2,14 @@
  * This class renders the clock visor
  */
 class Visor {
-  /**
-   * @type {Number}
-   */
   radius;
-
-  constructor(radius) {
-    this.radius = radius;
-  }
 
   /**
    *
    * @param {Number} radius
    */
-  setRadius(radius) {
+  constructor(radius) {
     this.radius = radius;
-  }
-
-  /**
-   *
-   * @returns {Number} The visor radius
-   */
-  getRadius() {
-    return this.radius;
   }
 
   /**
@@ -48,6 +33,12 @@ class Visor {
     ctx.fillStyle = "#eceff1";
     ctx.arc(0, 0, this.radius, 0, 360);
     ctx.stroke();
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.fillStyle = "#000";
+    ctx.arc(0, 0, 4, 0, 360);
     ctx.fill();
     ctx.closePath();
 
