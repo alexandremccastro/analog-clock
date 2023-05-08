@@ -4,24 +4,27 @@
 export class Visor {
   /**
    *
-   * @param {Number} radius
+   * @param {Object} config
    */
-  constructor(radius) {
-    this.radius = radius;
+  constructor(config) {
+    this.config = config;
   }
 
   /**
    *
    * @param {CanvasRenderingContext2D} ctx The context that the visor will be drawed
    */
-  draw(ctx, width, height) {
+  draw(ctx) {
+    const { width, height } = this.config;
+    const radius = width / 4;
+
     ctx.translate(width / 2, height / 2);
     ctx.save();
 
     // draws the largest circle body
     ctx.beginPath();
     ctx.fillStyle = "#37474F";
-    ctx.arc(0, 0, this.radius + 10, 0, 360);
+    ctx.arc(0, 0, radius + 10, 0, 360);
     ctx.stroke();
     ctx.fill();
     ctx.closePath();
@@ -29,7 +32,7 @@ export class Visor {
     // draws the inner container
     ctx.beginPath();
     ctx.fillStyle = "#eceff1";
-    ctx.arc(0, 0, this.radius, 0, 360);
+    ctx.arc(0, 0, radius, 0, 360);
     ctx.stroke();
     ctx.fill();
     ctx.closePath();
@@ -47,10 +50,10 @@ export class Visor {
       const angle = i * 6 - 90;
       const radians = (angle * Math.PI) / 180;
 
-      const x1 = (this.radius - (i % 5 == 0 ? 12 : 10)) * Math.cos(radians);
-      const y1 = (this.radius - (i % 5 == 0 ? 12 : 10)) * Math.sin(radians);
-      const x2 = (this.radius - 5) * Math.cos(radians);
-      const y2 = (this.radius - 5) * Math.sin(radians);
+      const x1 = (radius - (i % 5 == 0 ? 12 : 10)) * Math.cos(radians);
+      const y1 = (radius - (i % 5 == 0 ? 12 : 10)) * Math.sin(radians);
+      const x2 = (radius - 5) * Math.cos(radians);
+      const y2 = (radius - 5) * Math.sin(radians);
 
       ctx.beginPath();
       ctx.lineWidth = i % 5 == 0 ? 4 : 2;
@@ -70,8 +73,8 @@ export class Visor {
       const angle = i * 30 - 90;
       const radians = (angle * Math.PI) / 180;
 
-      const x = (this.radius - 25) * Math.cos(radians) - i + Math.PI;
-      const y = (this.radius - 25) * Math.sin(radians) + 5;
+      const x = (radius - 25) * Math.cos(radians) - i + Math.PI;
+      const y = (radius - 25) * Math.sin(radians) + 5;
       ctx.font = "14px Roboto";
       ctx.fillText(i, x, y);
       ctx.restore();

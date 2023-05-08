@@ -1,14 +1,16 @@
 export class Pointer {
   /**
    *
-   * @param {String} color
-   * @param {Number} height
-   * @param {Number} width
+   * @param {String} color The color of the pointer
+   * @param {Object} config Global clock config
+   * @param {Number} lenght The lenght of the pointer
+   * @param {Number} size The size of the pointer
    */
-  constructor(color, height, width) {
+  constructor(color, config, lenght, size) {
     this.color = color;
-    this.height = height;
-    this.width = width;
+    this.config = config;
+    this.lenght = lenght;
+    this.size = size;
   }
 
   /**
@@ -16,15 +18,18 @@ export class Pointer {
    * @param {CanvasRenderingContext2D} ctx The context that the pointer will be drawed
    */
   draw(ctx, angle) {
+    const { width } = this.config;
     ctx.save();
 
-    const x = (this.height - 15) * Math.cos(angle);
-    const y = (this.height - 15) * Math.sin(angle);
+    const pointerSize = width / this.lenght;
+
+    const x = (pointerSize - 15) * Math.cos(angle);
+    const y = (pointerSize - 15) * Math.sin(angle);
 
     ctx.rotate(angle);
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineWidth = this.width;
+    ctx.lineWidth = this.size;
     ctx.lineTo(x, y);
     ctx.strokeStyle = this.color;
     ctx.stroke();

@@ -3,16 +3,14 @@ import { Pointer } from "./pointer";
 export class Engine {
   /**
    *
-   * @param {Number} width
-   * @param {Number} height
+   * @param {Object} config
    */
-  constructor(width, height) {
-    this.width = width;
-    this.height = height;
+  constructor(config) {
+    this.config = config;
 
-    this.hourPointer = new Pointer("#000", width / 5, 5);
-    this.minutePointer = new Pointer("#000", width / 4, 3);
-    this.secondPointer = new Pointer("red", width / 4, 2);
+    this.hourPointer = new Pointer("#000", config, 5, 5);
+    this.minutePointer = new Pointer("#000", config, 4, 3);
+    this.secondPointer = new Pointer("red", config, 4, 2);
   }
 
   /**
@@ -49,12 +47,11 @@ export class Engine {
   /**
    *
    * @param {CanvasRenderingContext2D} ctx The context to draw the engine peaces
-   * @param {Number} width The canvas context width
-   * @param {Number} height The canvas context height
    */
   run(ctx) {
+    const { width, height } = this.config;
     ctx.save();
-    ctx.translate(this.width / 2, this.height / 2);
+    ctx.translate(width / 2, height / 2);
 
     const date = new Date();
     this.hourPointer.draw(ctx, this.getHourAngle(date));

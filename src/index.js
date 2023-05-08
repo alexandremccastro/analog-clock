@@ -1,6 +1,7 @@
 import "./assets/css/index.css";
 
 import { Clock } from "./core/clock";
+import { config, bindScreenSize } from "./core/config";
 
 function init() {
   /**
@@ -8,17 +9,14 @@ function init() {
    */
   const canvas = document.getElementById("canvas");
 
-  const { innerWidth, innerHeight } = window;
-
-  canvas.width = innerWidth < 500 ? innerWidth : 500;
-  canvas.height = innerHeight < 500 ? innerHeight : 500;
+  bindScreenSize(canvas);
 
   /**
    * @type {CanvasRenderingContext2D}
    */
   const ctx = canvas.getContext("2d");
 
-  new Clock(ctx, canvas.width, canvas.height).animate();
+  new Clock(ctx, config).animate();
 }
 
 window.addEventListener("load", init);
