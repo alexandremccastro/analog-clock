@@ -12,4 +12,11 @@ module.exports = {
   module: {
     rules: [{ test: /\.css$/i, use: ["style-loader", "css-loader"] }],
   },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, "./public"),
+    },
+    compress: true,
+    port: 8000,
+  },
 };
