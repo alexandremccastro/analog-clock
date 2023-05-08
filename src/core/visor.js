@@ -1,9 +1,7 @@
 /**
  * This class renders the clock visor
  */
-class Visor {
-  radius;
-
+export class Visor {
   /**
    *
    * @param {Number} radius

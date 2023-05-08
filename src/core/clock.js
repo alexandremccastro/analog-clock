@@ -1,10 +1,7 @@
-class Clock {
-  visor;
-  engine;
-  ctx;
-  width;
-  height;
+import { Visor } from "./visor";
+import { Engine } from "./engine";
 
+export class Clock {
   /**
    *
    * @param {CanvasRenderingContext2D} ctx The context that will render the clock

@@ -1,8 +1,4 @@
-class Pointer {
-  color;
-  height;
-  width;
-
+export class Pointer {
   /**
    *
    * @param {String} color

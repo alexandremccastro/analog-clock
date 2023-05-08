@@ -1,0 +1,8 @@
+
+# compiled output
+/node_modules
+/dist
+
+# IDEs config
+.idea
+.vscode

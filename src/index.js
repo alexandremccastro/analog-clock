@@ -1,3 +1,7 @@
+import "./assets/css/index.css";
+
+import { Clock } from "./core/clock";
+
 function init() {
   /**
    * @type {HTMLCanvasElement}

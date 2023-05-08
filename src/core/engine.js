@@ -1,8 +1,6 @@
-class Engine {
-  hourPointer;
-  minutePointer;
-  secondPointer;
+import { Pointer } from "./pointer";
 
+export class Engine {
   /**
    *
    * @param {Number} width
